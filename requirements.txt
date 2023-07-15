@@ -9,4 +9,3 @@ streamlit-folium==0.13.0
 plotly==5.15.0
 Pillow==9.5.0
 zipp==3.16.0
-folium.plugins==0.12.1
