@@ -2,7 +2,7 @@ folium==0.14.0
 branca==0.6.0
 streamlit-folium==0.13.0
 plotly==5.15.0
-zipfile==0.1.4
+zipfile==3.11.4
 matplotlib==3.5.1
 folium.plugins==0.12.1
 streamlit==1.4.0
