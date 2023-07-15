@@ -33,7 +33,7 @@ st.markdown(
 zip_file_path = 'dataset/trainn.zip'
 
 # Name of the CSV file within the ZIP
-csv_file_name = 'train.csv'
+csv_file_name = 'train_.csv'
 
 # Open the ZIP file
 with zipfile.ZipFile(zip_file_path, 'r') as zip_file:
