@@ -30,10 +30,10 @@ st.markdown(
 
 
 # Path to the ZIP file
-zip_file_path = 'dataset/test.zip'
+zip_file_path = 'dataset/trainn.zip'
 
 # Name of the CSV file within the ZIP
-csv_file_name = 'test.csv'
+csv_file_name = 'train.csv'
 
 # Open the ZIP file
 with zipfile.ZipFile(zip_file_path, 'r') as zip_file:
@@ -44,8 +44,6 @@ with zipfile.ZipFile(zip_file_path, 'r') as zip_file:
             # Use pandas to read the CSV data
             df = pd.read_csv(csv_file_in_zip)
             
-            # Now you can work with the DataFrame (df) as usual
-            print(df.head())
     else:
         print(f"The file '{csv_file_name}' does not exist in the ZIP file.")
 
@@ -60,7 +58,7 @@ def show_data():
 def draw_map_pickup():
     # Limit the DataFrame to 1000 rows
     df_limited = df.head(1000)
-    df_limited['trip_duration'] = np.log1p(df_limited['trip_duration'])
+    df_limited['trip_duration'] = np.log(df['trip_duration'].values + 1)
 
     # Then, we define how we'd like to set the color
     colormap_pickup = LinearColormap(colors=['green', 'darkgreen'], vmin=df_limited['trip_duration'].min(), vmax=df_limited['trip_duration'].max())
