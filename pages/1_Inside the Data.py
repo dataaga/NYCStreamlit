@@ -43,7 +43,7 @@ with zipfile.ZipFile(zip_file_path, 'r') as zip_file:
         with zip_file.open(csv_file_name) as csv_file_in_zip:
             # Use pandas to read the CSV data
             df = pd.read_csv(csv_file_in_zip)
-            
+            df = df.sample(frac =.1)
     else:
         print(f"The file '{csv_file_name}' does not exist in the ZIP file.")
 
