@@ -57,16 +57,16 @@ def show_data():
 @st.cache_data
 def draw_map_pickup():
     # Limit the DataFrame to 1000 rows
-    df_limited = df.head(1000)
-    df_limited['trip_duration'] = np.log(df['trip_duration'].values + 1)
+    #df_limited = df.head(1000)
+    df['trip_duration'] = np.log(df['trip_duration'].values + 1)
 
     # Then, we define how we'd like to set the color
-    colormap_pickup = LinearColormap(colors=['green', 'darkgreen'], vmin=df_limited['trip_duration'].min(), vmax=df_limited['trip_duration'].max())
+    colormap_pickup = LinearColormap(colors=['green', 'darkgreen'], vmin=df['trip_duration'].min(), vmax=df['trip_duration'].max())
     
     m_pickup = folium.Map(location=[40.73569, -73.87133], zoom_start=11, tiles='stamentoner')
 
     # For each 'row' in the limited dataframe, add the pickup locations to the map
-    for lat, lon, ap in zip(df_limited['pickup_latitude'], df_limited['pickup_longitude'], df_limited['trip_duration']):
+    for lat, lon, ap in zip(df['pickup_latitude'], df['pickup_longitude'], df['trip_duration']):
         folium.Circle(
             location=[lat, lon],
             radius=100,
@@ -90,16 +90,16 @@ def show_data():
 @st.cache_data
 def draw_map_dropoff():
     # Limit the DataFrame to 1000 rows
-    df_limited = df.head(1000)
+    #df_limited = df.head(1000)
 
     # Then, we define how we'd like to set the color
-    colormap_dropoff = LinearColormap(colors=['blue', 'darkblue'], vmin=df_limited['trip_duration'].min(), vmax=df_limited['trip_duration'].max())
+    colormap_dropoff = LinearColormap(colors=['blue', 'darkblue'], vmin=df['trip_duration'].min(), vmax=df['trip_duration'].max())
 
     # Create a new map for dropoff locations
     m_dropoff = folium.Map(location=[40.73569, -73.87133], zoom_start=11, tiles='stamentoner')
 
     # For each 'row' in the limited dataframe, add the dropoff locations to the map
-    for lat, lon, ap in zip(df_limited['dropoff_latitude'], df_limited['dropoff_longitude'], df_limited['trip_duration']):
+    for lat, lon, ap in zip(df['dropoff_latitude'], df['dropoff_longitude'], df['trip_duration']):
         folium.Circle(
             location=[lat, lon],
             radius=100,
